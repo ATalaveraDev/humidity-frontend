@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>ISC - Selector de humedad</span>
+</mat-toolbar>
+<div class="content">
+  <mat-card fxLayout="row">
+    <div fxFlex="80">
+      <mat-card-title>Random</mat-card-title>
+      <mat-card-subtitle>Generates random humidity values</mat-card-subtitle>
+    </div>
+    <div fxFlex="20">
+      <mat-slide-toggle [color]="'primary'" (change)="onChange($event)"></mat-slide-toggle>
+    </div>
+  </mat-card>
+</div>
