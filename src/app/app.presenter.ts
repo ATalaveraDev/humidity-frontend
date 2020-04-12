@@ -5,8 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class AppPresenter {
   socket: WebSocket;
+  plants: Array<string>;
 
-  constructor() { }
+  constructor() {
+    this.plants = [
+      'Plant A',
+      'Plant B'
+    ];
+  }
 
   startRandomDataGeneration(): void {
     this.socket = new WebSocket('ws://localhost:8080');
@@ -15,7 +21,7 @@ export class AppPresenter {
       console.log('** Websocket Opened **');
       setInterval(() => {
         const date = new Date();
-        this.socket.send(JSON.stringify({ value: Math.trunc(Math.random() * 1024), date: date }));
+        this.socket.send(JSON.stringify({ value: Math.trunc(Math.random() * 1024), date: date, plant: this.plants[Math.trunc(Math.random() * this.plants.length)] }));
       }, 10000);
     };
   }
